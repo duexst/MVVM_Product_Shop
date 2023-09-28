@@ -1,0 +1,45 @@
+﻿@viewModel MVVM_Product_Shop.ViewModels.CRUD.CreateViewModel, MVVM_Product_Shop
+@masterPage Views/MasterPage.dotmaster
+@import MVVM_Product_Shop.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="page-center">
+        <dot:RouteLink RouteName="Default" Text="Go back" class="page-button btn-back btn-long"/>
+        <form class="page-box" 
+             Validator.InvalidCssClass="has-error"
+             Validator.SetToolTipText="true">
+
+            <h1>{{resource: Texts.Title_Create}}</h1>
+            <div Validator.Value="{value: Student.FirstName}"
+                 class="page-input-box">
+                {{resource: Texts.Label_Firstname}}:
+                <dot:TextBox Text="{value: Student.FirstName}" class="page-input"/>
+            </div>
+
+            <div Validator.Value="{value: Student.LastName}"
+                 class="page-input-box">
+                {{resource: Texts.Label_Lastname}}:
+                <dot:TextBox Text="{value: Student.LastName}" class="page-input"/>
+            </div>
+
+            <div Validator.Value="{value: Student.EnrollmentDate}"
+                 class="page-input-box">
+                {{resource: Texts.Label_EnrollmentDate}}:
+                <dot:TextBox Text="{value: Student.EnrollmentDate}" 
+                             ValueType="DateTime" 
+                             FormatString="dd/MM/yyyy"
+                             class="page-input"/>
+            </div>
+
+            <div Validator.Value="{value: Student.About}"
+                 class="page-input-box">
+                {{resource: Texts.Label_About}}:
+                <dot:TextBox Text="{value: Student.About}" Type="MultiLine" class="page-input"/>
+            </div>
+            <div class="btn-container">
+                <dot:Button Text="{resource: Texts.Label_Add}" Click="{command: AddStudent()}" class="page-button" IsSubmitButton />
+            </div>
+        </form>
+    </div>
+</dot:Content>
+

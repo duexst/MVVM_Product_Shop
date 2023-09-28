@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MVVM_Product_Shop": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51943;http://localhost:51944"
+    }
+  }
+}
