@@ -33,6 +33,16 @@ namespace MVVM_Product_Shop.Services
             ).ToListAsync();
         }
 
+        public async Task<List<Category>> GetCategoriesAsync()
+        {
+            return await _productShopDbContext.Categories.Select(
+                c => new Category
+                {
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.CategoryName,
+                }).ToListAsync();
+        }
+
         public async Task<ProductModel> GetProductByIdAsync(int productId)
         {
             return await _productShopDbContext.Products.Select(
@@ -59,7 +69,7 @@ namespace MVVM_Product_Shop.Services
                 Description = product.Description,
                 IsFeaturedProduct = product.IsFeaturedProduct,
                 CategoryId = product.CategoryId,
-                Category = product.Category
+                Category = await _productShopDbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == product.CategoryId)
             };
 
             _productShopDbContext.Products.Add(entity);

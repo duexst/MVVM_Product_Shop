@@ -5,33 +5,42 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <div class="page-center">
         <dot:RouteLink RouteName="Default" Text="Go back" class="page-button btn-back btn-long"/>
-        <form class="page-box" 
-             Validator.InvalidCssClass="has-error"
-             Validator.SetToolTipText="true">
+        <form class="page-box"
+              Validator.InvalidCssClass="has-error"
+              Validator.SetToolTipText="true">
 
             <h1>{{resource: Texts.Title_Create}}</h1>
             <div Validator.Value="{value: Product.Name}"
                  class="page-input-box">
                 {{resource: Texts.Label_ProductName}}:
-                <dot:TextBox Text="{value: Product.Name}" class="page-input"/>
+                <dot:TextBox Text="{value: Product.Name}" class="page-input" />
             </div>
 
             <div Validator.Value="{value: Product.Price}"
                  class="page-input-box">
                 {{resource: Texts.Label_ProductPrice}}:
-                <dot:TextBox Text="{value: Product.Price}" class="page-input"/>
+                <dot:TextBox Text="{value: Product.Price}" FormatString="c2" class="page-input" />
             </div>
 
-            <div Validator.Value="{value: Student.EnrollmentDate}"
+            <div Validator.Value="{value: Product.Description}"
                  class="page-input-box">
-                {{resource: Texts.Label_EnrollmentDate}}:
-                <dot:TextBox Text="{value: Student.EnrollmentDate}" class="page-input"/>
+                {{resource: Texts.Label_ProductDescription}}:
+                <dot:TextBox Text="{value: Product.Description}" Type="MultiLine" class="page-input" />
             </div>
 
-            <div Validator.Value="{value: Student.About}"
-                 class="page-input-box">
-                {{resource: Texts.Label_About}}:
-                <dot:TextBox Text="{value: Student.About}" Type="MultiLine" class="page-input"/>
+            <div>
+                {{resource: Texts.Label_ProductIsFeatured}}:
+                <dot:CheckBox Text="Is Featured" Checked="{value: Product.IsFeaturedProduct}" />
+            </div>
+            <div>
+                {{resource: Texts.Label_ProductCategory}}
+                <dot:ComboBox class="form-select-sm"
+                              DataSource="{value: Categories}"
+                              ItemTextBinding="{value: CategoryName}"
+                              ItemTitleBinding="{value: CategoryName}"
+                              EmptyItemText="(select category)"
+                              SelectedValue="{value: SelectedCategory}"
+                              SelectionChanged="{staticCommand:  Product.CategoryId = SelectedCategory.CategoryId}" />
             </div>
             <div class="btn-container">
                 <dot:Button Text="{resource: Texts.Label_Add}" Click="{command: AddProduct()}" class="page-button" IsSubmitButton />

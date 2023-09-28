@@ -18,6 +18,7 @@ namespace MVVM_Product_Shop.ViewModels
 
         public List<ProductModel> Products { get; set; }
         public List<ProductModel> FilteredProducts { get; set; } = new List<ProductModel>();
+        public List<ProductModel> ShoppingCart {  get; set; } = new List<ProductModel>();
         public string SearchQuery { get; set; }
         public Category SelectedCategory { get; set; }
         public List<Category> Categories { get; set; }
@@ -45,7 +46,7 @@ namespace MVVM_Product_Shop.ViewModels
 
         public void FilterProductsByCategory()
         {
-            if (String.IsNullOrEmpty(SelectedCategory.CategoryName))
+            if (String.IsNullOrEmpty(SelectedCategory?.CategoryName))
             {
                 FilteredProducts = Products;
                 return;
@@ -69,6 +70,17 @@ namespace MVVM_Product_Shop.ViewModels
         public void ClearFilter()
         {
             FilteredProducts = Products;
+            SearchQuery = "";
+        }
+
+        public void AddProduct(ProductModel product)
+        {
+            ShoppingCart.Add(product);
+        }
+
+        public void RemoveProduct(ProductModel product)
+        {
+            ShoppingCart.Remove(product);
         }
     }
 }
