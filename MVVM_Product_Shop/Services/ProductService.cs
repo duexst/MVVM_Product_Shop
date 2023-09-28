@@ -76,7 +76,6 @@ namespace MVVM_Product_Shop.Services
             _productShopDbContext.Products.Remove(entity);
             await _productShopDbContext.SaveChangesAsync();
         }
-
     }
 }
 

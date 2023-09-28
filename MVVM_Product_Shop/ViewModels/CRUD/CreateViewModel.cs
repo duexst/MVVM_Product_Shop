@@ -10,19 +10,19 @@ namespace MVVM_Product_Shop.ViewModels.CRUD
 {
     public class CreateViewModel : MasterPageViewModel
     {
-        private readonly ProductService studentService;
+        private readonly ProductService productService;
 
         public ProductModel Product { get; set; } = new ProductModel {  };
 
-        public CreateViewModel(ProductService studentService)
+        public CreateViewModel(ProductService productService)
         {
-            this.studentService = studentService;
+            this.productService = productService;
         }
 
 
         public async Task AddProduct()
         {
-            await studentService.InsertProductAsync(Product);
+            await productService.InsertProductAsync(Product);
             Context.RedirectToRoute("Default");
         }
     }

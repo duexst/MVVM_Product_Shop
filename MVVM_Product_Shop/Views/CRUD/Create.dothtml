@@ -10,25 +10,22 @@
              Validator.SetToolTipText="true">
 
             <h1>{{resource: Texts.Title_Create}}</h1>
-            <div Validator.Value="{value: Student.FirstName}"
+            <div Validator.Value="{value: Product.Name}"
                  class="page-input-box">
-                {{resource: Texts.Label_Firstname}}:
-                <dot:TextBox Text="{value: Student.FirstName}" class="page-input"/>
+                {{resource: Texts.Label_ProductName}}:
+                <dot:TextBox Text="{value: Product.Name}" class="page-input"/>
             </div>
 
-            <div Validator.Value="{value: Student.LastName}"
+            <div Validator.Value="{value: Product.Price}"
                  class="page-input-box">
-                {{resource: Texts.Label_Lastname}}:
-                <dot:TextBox Text="{value: Student.LastName}" class="page-input"/>
+                {{resource: Texts.Label_ProductPrice}}:
+                <dot:TextBox Text="{value: Product.Price}" class="page-input"/>
             </div>
 
             <div Validator.Value="{value: Student.EnrollmentDate}"
                  class="page-input-box">
                 {{resource: Texts.Label_EnrollmentDate}}:
-                <dot:TextBox Text="{value: Student.EnrollmentDate}" 
-                             ValueType="DateTime" 
-                             FormatString="dd/MM/yyyy"
-                             class="page-input"/>
+                <dot:TextBox Text="{value: Student.EnrollmentDate}" class="page-input"/>
             </div>
 
             <div Validator.Value="{value: Student.About}"
@@ -37,7 +34,7 @@
                 <dot:TextBox Text="{value: Student.About}" Type="MultiLine" class="page-input"/>
             </div>
             <div class="btn-container">
-                <dot:Button Text="{resource: Texts.Label_Add}" Click="{command: AddStudent()}" class="page-button" IsSubmitButton />
+                <dot:Button Text="{resource: Texts.Label_Add}" Click="{command: AddProduct()}" class="page-button" IsSubmitButton />
             </div>
         </form>
     </div>

@@ -23,7 +23,7 @@
 
             <div class="page-input-box">
                 {{resource: Texts.Label_ProductDescription}}
-                <span class="input-text-only"><dot:Literal Text="{{value: Product.Description}}" FormatString="dd/MM/yyyy" /></span>
+                <span class="input-text-only"><dot:Literal Text="{{value: Product.Description}}" /></span>
             </div>
 
             <div class="btn-container">
