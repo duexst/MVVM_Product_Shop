@@ -27,12 +27,12 @@ namespace MVVM_Product_Shop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
 
-            services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            //services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
-            services.AddSession();
+            //services.AddSession();
             services.AddHttpContextAccessor();
             services.AddDataProtection();
             services.AddAuthorization();

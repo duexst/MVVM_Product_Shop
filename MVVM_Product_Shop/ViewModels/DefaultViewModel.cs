@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace MVVM_Product_Shop.ViewModels
     {
 
         private readonly ProductService productService;
+        private Stopwatch _stopwatch;
 
 
         public List<ProductModel> Products { get; set; }
@@ -26,9 +28,11 @@ namespace MVVM_Product_Shop.ViewModels
 		public DefaultViewModel(ProductService productService)
         {
             this.productService = productService;
+            this._stopwatch = new Stopwatch();
         }
         public override async Task PreRender()
         {
+            //_stopwatch.Restart();
             if (!Context.IsPostBack)
             {
                 Products = await productService.GetAllProductsAsync();
@@ -40,12 +44,13 @@ namespace MVVM_Product_Shop.ViewModels
                         Categories.Add(product.Category);
                 }
             }
-
             await base.PreRender();
+            _stopwatch.Stop();
         }
 
         public void FilterProductsByCategory()
         {
+            _stopwatch.Restart();
             if (String.IsNullOrEmpty(SelectedCategory?.CategoryName))
             {
                 FilteredProducts = Products;
@@ -53,18 +58,20 @@ namespace MVVM_Product_Shop.ViewModels
             }
 
             FilteredProducts = Products.FindAll(products => products.CategoryId == SelectedCategory.CategoryId);
+            _stopwatch.Stop();
         }
 
         
         public void FilterProductsByQuery()
         {
-
+            _stopwatch.Restart();
             if (string.IsNullOrEmpty(SearchQuery))
             {
                 FilteredProducts = Products;
                 return;
             }
             FilteredProducts = Products.FindAll(products => products.Name.ToLower().Contains(SearchQuery));
+            _stopwatch.Stop();
         }
 
         public void ClearFilter()
@@ -75,6 +82,7 @@ namespace MVVM_Product_Shop.ViewModels
 
         public void AddProduct(ProductModel product)
         {
+            _stopwatch.Restart();
             ShoppingCart.Add(product);
         }
 

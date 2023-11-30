@@ -15,7 +15,6 @@
             <div class="page-input-box">
                 <label for="searchText">Search for Product: </label>
                 <dot:TextBox Text="{value: SearchQuery}" class="page-input" />
-                <p>{{value: SearchQuery}}</p>
             </div>
             <div>
                 <dot:ComboBox class="form-select-sm"
